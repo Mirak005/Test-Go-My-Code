@@ -35,7 +35,6 @@ body{
 }
 
 
-.posts *{
-  margin:2%;
-  
+.posts h3,.posts p   {
+  margin: 1rem 5rem 1rem;
 }

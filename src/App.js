@@ -57,6 +57,7 @@ class App extends React.Component {
         />
         {this.state.users.map(user => (
           <Route
+            key={user.id}
             path={`/${user.id}`}
             render={() => (
               <UserPosts

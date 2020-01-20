@@ -40,9 +40,10 @@ function UserPosts({
         {posts.map(post => (
           <div
             key={post.id}
-            className="row-12 bg-dark text-white"
+            className="row-12 bg-dark text-white t"
             style={{ margin: "2rem", padding: "1rem" }}
-          >
+          >  
+          <div className="border border-ligh rounded">
             <h3 className="text-center text-dark post-name">{name[0]}</h3>
             <h3>{post.title}</h3>
             <p>{post.body}</p>
@@ -51,18 +52,19 @@ function UserPosts({
                 comments.filter(comment => comment.postId === post.id).length
               } comments`}
             </p>
+            </div>
             {comments
               .filter(comment => comment.postId === post.id)
               .map(comment => (
                 <div
                   key={comment.id}
-                  className="row-12 mr-auto  bg-light text-dark text-left display-flex aling-items-column"
+                  className="row-12  rounded-pill bg-light text-dark text-left display-flex aling-items-column"
                   style={{ margin: "2rem" }}
                 >
-                  <h3 className="text-decoration-underline text-monospace">
+                  <h3 className="comment-name  text-decoration-underline text-monospace">
                     {comment.name}
                   </h3>
-                  <p className="text-muted">{comment.email}</p>
+                  <p className="comment-email  text-muted">{comment.email}</p>
                 </div>
               ))}
           </div>
