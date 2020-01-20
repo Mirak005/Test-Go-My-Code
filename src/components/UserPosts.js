@@ -1,12 +1,6 @@
 import React from "react";
-import PostComments from "./PostComments";
-import {
-  Jumbotron,
-  Container,
-  Badge,
-  ListGroup,
-  ListGroupItem
-} from "react-bootstrap";
+
+import { Jumbotron, Container, Badge } from "react-bootstrap";
 
 function UserPosts({
   user: { name, email, phone, website, company, address },
@@ -25,35 +19,47 @@ function UserPosts({
           </h2>
           <h2 className="text-justify-left">{name}</h2>
           <h5 className="text-justify-left">
-            Phone Number : <Badge variant="secondary">{`  ${phone}`}</Badge>
+            Phone Number : <Badge variant="secondary">{`${phone}`}</Badge>
           </h5>
           <h5 className="text-justify-left">
-            E-mail : <Badge variant="secondary">{`  ${email}`}</Badge>
+            E-mail : <Badge variant="secondary">{`${email}`}</Badge>
           </h5>
           <h5 className="text-justify-left">
             Address :
             <Badge variant="secondary">{`${address.street} ${address.suite} ${address.city} ${address.zipcode}`}</Badge>
           </h5>
           <h5 className="text-justify-left">
-            Company Name :
-            <Badge variant="secondary">{`${company.name}`}</Badge>
+            Company Name :<Badge variant="secondary">{`${company.name}`}</Badge>
           </h5>
           <h5 className="text-justify-left">
             Website Link : <Badge variant="secondary">{`${website}`}</Badge>
           </h5>
         </Container>
       </Jumbotron>
-      <div className="posts bg-primary text-center container">
+      <div className="posts bg-light text-center container">
         {posts.map(post => (
-          <div key={post.id} className="row bg-dark text-white">
-            <h3>this is a post title:{post.title}</h3>
-            <p>this is a post body:{post.body}</p>
-        <p>{comments.filter(comment => comment.postId === post.id).length} comments</p>
+          <div
+            key={post.id}
+            className="row-12 bg-dark text-white"
+            style={{ margin: "2rem", padding: "1rem" }}
+          >
+            <h3 className="text-center text-dark post-name">{name[0]}</h3>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+            <p>
+              {`${comments.filter(comment => comment.postId === post.id).length} comments`}
+            
+            </p>
             {comments
               .filter(comment => comment.postId === post.id)
-              .map(comment => (<div className="row bg-light text-dark text-left">
-                <h3>{comment.name}</h3>
-                <p>{comment.email}</p>
+              .map(comment => (
+                <div
+                  key={comment.id}
+                  className="row-12 mr-auto  bg-light text-dark text-left display-flex aling-items-column"
+                  style={{ margin: "2rem" }}
+                >
+                  <h3 className="text-decoration-underline text-monospace">{comment.name}</h3>
+                  <p className="text-muted">{comment.email}</p>
                 </div>
               ))}
           </div>
