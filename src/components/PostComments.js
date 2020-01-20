@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Accordion, Card } from "react-bootstrap";
+import { ListGroupItem, ListGroup } from "react-bootstrap";
 
 class PostComments extends Component {
   state = {
@@ -14,12 +14,39 @@ class PostComments extends Component {
   render() {
     return (
       <div>
-      
-              {this.state.comments.map(comment=> <div>  <p key={comment.id }>{comment.name}</p></div>   )}
+        {this.state.comments.map(comment => (
+         
+            <div  key={comment.id}>
+              {/* <h2>{comment.name}</h2> */}
+               <h2>{comment.email}</h2>
+              
             
+            </div>
+          
+        ))}
       </div>
     );
   }
 }
 
 export default PostComments;
+
+{
+  /* <div key={comment.id}>
+            <Accordion>
+              <Card>
+                <Card.Header>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Click me!
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>
+                    <h3> this is a comment:{comment.name}</h3>{" "}
+                    <p>{comment.name}</p>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            </Accordion>
+          </div> */
+}

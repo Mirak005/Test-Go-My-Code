@@ -36,9 +36,14 @@ class App extends React.Component {
     });
   };
   componentDidMount = () => {
-    this.getUsers();
-    this.getPosts();
-    this.getComments()
+    setTimeout(()=>{
+
+      this.getUsers();
+      this.getPosts();
+      this.getComments()
+
+    },500)
+    
   };
 
   render() {
