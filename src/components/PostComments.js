@@ -15,14 +15,10 @@ class PostComments extends Component {
     return (
       <div>
         {this.state.comments.map(comment => (
-         
-            <div  key={comment.id}>
-              {/* <h2>{comment.name}</h2> */}
-               <h2>{comment.email}</h2>
-              
-            
-            </div>
-          
+          <div key={comment.id}>
+            {/* <h2>{comment.name}</h2> */}
+            <h2>{comment.email}</h2>
+          </div>
         ))}
       </div>
     );

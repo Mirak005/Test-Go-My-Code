@@ -47,8 +47,9 @@ function UserPosts({
             <h3>{post.title}</h3>
             <p>{post.body}</p>
             <p>
-              {`${comments.filter(comment => comment.postId === post.id).length} comments`}
-            
+              {`${
+                comments.filter(comment => comment.postId === post.id).length
+              } comments`}
             </p>
             {comments
               .filter(comment => comment.postId === post.id)
@@ -58,7 +59,9 @@ function UserPosts({
                   className="row-12 mr-auto  bg-light text-dark text-left display-flex aling-items-column"
                   style={{ margin: "2rem" }}
                 >
-                  <h3 className="text-decoration-underline text-monospace">{comment.name}</h3>
+                  <h3 className="text-decoration-underline text-monospace">
+                    {comment.name}
+                  </h3>
                   <p className="text-muted">{comment.email}</p>
                 </div>
               ))}

@@ -2,25 +2,24 @@ import React from "react";
 import axios from "axios";
 import AppNavbar from "./components/AppNavbar";
 import ContactCard from "./components/ContactCard";
-import UserPosts from './components/UserPosts'
+import UserPosts from "./components/UserPosts";
 import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 
 class App extends React.Component {
   state = {
     users: [],
     posts: [],
-    comments:[]
+    comments: []
   };
 
-   getComments = () => {
+  getComments = () => {
     axios.get("https://jsonplaceholder.typicode.com/comments").then(res => {
       this.setState({ comments: res.data });
       console.log(res.data);
     });
-   }
+  };
 
   getUsers = () => {
     axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
@@ -36,14 +35,9 @@ class App extends React.Component {
     });
   };
   componentDidMount = () => {
-    setTimeout(()=>{
-
-      this.getUsers();
-      this.getPosts();
-      this.getComments()
-
-    },500)
-    
+    this.getUsers();
+    this.getPosts();
+    this.getComments();
   };
 
   render() {
@@ -61,15 +55,19 @@ class App extends React.Component {
             </div>
           )}
         />
-        {this.state.users.map(user=> <Route 
-         path={`/${user.id}`}
-         render={()=><UserPosts key={user.id} 
-         user={user}
-          posts={this.state.posts.filter(post=> user.id=== post.userId)} 
-          comments = {this.state.comments}
-          />}
-         /> )}
-        
+        {this.state.users.map(user => (
+          <Route
+            path={`/${user.id}`}
+            render={() => (
+              <UserPosts
+                key={user.id}
+                user={user}
+                posts={this.state.posts.filter(post => user.id === post.userId)}
+                comments={this.state.comments}
+              />
+            )}
+          />
+        ))}
       </div>
     );
   }
