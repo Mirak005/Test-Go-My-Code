@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import AppNavbar from "./components/AppNavbar";
 import ContactCard from "./components/ContactCard";
-import UserPosts from "./components/UserPosts";
+import UserProfile from "./components/UserProfile";
 import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -11,7 +11,8 @@ class App extends React.Component {
   state = {
     users: [],
     posts: [],
-    comments: []
+    comments: [],
+    isGrid:true
   };
 
   getComments = () => {
@@ -40,15 +41,19 @@ class App extends React.Component {
     this.getComments();
   };
 
+  gridListHandler=(value)=>{
+    this.setState({isGrid:value})
+  }
+
   render() {
     return (
       <div>
-        <AppNavbar />
+        <AppNavbar gridListHandler={this.gridListHandler} />
         <Route
           exact
           path="/"
           render={() => (
-            <div className="contact-list">
+            <div className={this.state.isGrid?"contact-grid":"contact-list"}>
               {this.state.users.map(user => (
                 <ContactCard key={user.id} user={user} />
               ))}
@@ -60,7 +65,7 @@ class App extends React.Component {
             key={user.id}
             path={`/${user.id}`}
             render={() => (
-              <UserPosts
+              <UserProfile
                 key={user.id}
                 user={user}
                 posts={this.state.posts.filter(post => user.id === post.userId)}

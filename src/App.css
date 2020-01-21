@@ -1,3 +1,8 @@
+
+
+
+
+
 body{
   background: ghostwhite;
 }
@@ -29,12 +34,15 @@ body{
 
 /*contact list*/
 
-.contact-list{
+.contact-grid{
   display: flex;
   flex-wrap: wrap;
 }
-
-
+.contact-list{
+  display: flex;
+  flex-direction: column;
+}
+/*  posts  */
 .posts h3,.posts p   {
-  margin: 1rem 5rem 1rem;
+  margin: 1rem 2rem 1rem;
 }

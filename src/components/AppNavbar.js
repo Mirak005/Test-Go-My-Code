@@ -12,7 +12,8 @@ import {
 
 class AppNavbar extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+  
   };
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -24,7 +25,13 @@ class AppNavbar extends Component {
         <Navbar color="dark" dark expand="sm" className="mb-5">
           <Container>
             <NavbarBrand href="/">
-              <h1>Contact List</h1>{" "}
+              <h1>Contact List</h1>
+            </NavbarBrand>
+            <NavbarBrand>
+              <button className="btn-info m-3" onClick={()=>this.props.gridListHandler(false)}>List</button>
+            </NavbarBrand>
+            <NavbarBrand>
+            <button className="btn-info m-3" onClick={()=>this.props.gridListHandler(true)}> Grid</button>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
@@ -33,10 +40,10 @@ class AppNavbar extends Component {
                   <NavLink href="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/">Posts</NavLink>{" "}
+                  <NavLink href="/">Posts</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/">Contact us </NavLink>{" "}
+                  <NavLink href="/">Contact us </NavLink>
                 </NavItem>
               </Nav>
             </Collapse>
